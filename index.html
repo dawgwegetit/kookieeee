@@ -290,6 +290,73 @@ body {
   50% { transform: translateY(-10px); }
 }
 
+/* Bracelet keepsake section */
+.keepsake {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(230, 215, 242, 0.55));
+}
+.keepsake .label {
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  color: var(--deep);
+  margin-bottom: 6px;
+  opacity: 0.9;
+}
+.keepsake h2 { margin-bottom: 18px; }
+.keepsake .frame {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.85), rgba(252, 228, 236, 0.7));
+  box-shadow: 0 14px 40px rgba(138, 90, 107, 0.18), inset 0 0 0 1px rgba(255,255,255,0.6);
+  margin: 6px 0 22px;
+  max-width: 100%;
+}
+.keepsake .frame img {
+  display: block;
+  max-width: 100%;
+  width: 380px;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+.keepsake .frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  pointer-events: none;
+  box-shadow: inset 0 0 60px rgba(232, 164, 184, 0.15);
+}
+.keepsake .meaning {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: var(--ink);
+  font-style: italic;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.keepsake .meaning .accent {
+  font-style: normal;
+  color: var(--deep);
+  font-weight: 500;
+}
+.keepsake .pearls {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin: 18px 0 6px;
+}
+.keepsake .pearls span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #f1e6ea 60%, #d9bfc6 100%);
+  box-shadow: 0 1px 3px rgba(138, 90, 107, 0.25);
+}
+
 /* Letter section */
 .letter {
   font-family: 'Cormorant Garamond', serif;
@@ -383,6 +450,20 @@ body {
     <div class="infinity">&#8734;</div>
     <h3>there it is. the only correct answer.</h3>
     <p>infinity, because nothing smaller fits. you are loved beyond counting.</p>
+  </section>
+
+  <section class="card keepsake">
+    <p class="label">the bracelet you gave me</p>
+    <h2>a string of little forevers</h2>
+    <div class="frame">
+      <img src="bracelet.jpg" alt="the pearl bracelet kookie gave me, on my wrist">
+    </div>
+    <div class="pearls">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <p class="meaning">
+      i wear this every day and i don't think you know what it does to me. each pearl feels like a small <span class="accent">i love you</span> you slipped onto my wrist — quiet, round, perfect, impossible to lose. on the loud days it's the calmest thing on me. on the lonely days it's you, holding my hand from wherever you are. it isn't jewelry. it's a promise i can feel.
+    </p>
   </section>
 
   <section class="card">
