@@ -11,6 +11,34 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* Tiny visit counter */
+.visit-counter {
+  position: fixed;
+  top: 12px;
+  right: 14px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--deep);
+  background: rgba(255, 255, 255, 0.65);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(232, 164, 184, 0.35);
+  box-shadow: 0 4px 14px rgba(232, 164, 184, 0.2);
+  z-index: 50;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  letter-spacing: 0.02em;
+}
+.visit-counter.show { opacity: 0.9; }
+.visit-counter .heart {
+  color: var(--rose);
+  margin-right: 4px;
+  font-weight: 700;
+}
+
 :root {
   --blush: #f7d4d4;
   --rose: #e8a4b8;
@@ -421,6 +449,8 @@ body {
 </head>
 <body>
 
+<div class="visit-counter" id="visitCounter" aria-label="visits"><span class="heart">&#9825;</span><span id="visitCount">…</span></div>
+
 <div class="petals" id="petals"></div>
 
 <div class="container">
@@ -492,6 +522,19 @@ body {
 </div>
 
 <script>
+  // Visit counter (anonymous, free counter API)
+  (function () {
+    const counterEl = document.getElementById('visitCounter');
+    const numEl = document.getElementById('visitCount');
+    fetch('https://abacus.jasoncameron.dev/hit/dawgwegetit-kookieeee/visits')
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(data => {
+        numEl.textContent = data.value;
+        counterEl.classList.add('show');
+      })
+      .catch(() => { /* hide silently if the API is unreachable */ });
+  })();
+
   // Floating petals
   const petalsContainer = document.getElementById('petals');
   for (let i = 0; i < 22; i++) {
